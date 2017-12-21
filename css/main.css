@@ -1,0 +1,496 @@
+
+
+html{
+  font-family: 'Roboto Mono', monospace;
+  background-color: #008888;
+  font-size: 14px;
+  background-image: url('../img/nextstep-bg.gif');
+  letter-spacing: -.2px;
+  font-weight: 500;
+}
+
+body{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /*background-image: url('../img/logo.png');*/
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+
+
+
+
+
+
+
+/* ### --- WINDOWS START --- ### */
+
+
+
+.window{
+  position: fixed;
+  transition: height .01s;
+  box-shadow: 15px 15px 8px rgba(0, 0, 0, .5);
+  overflow: hidden;
+  display: none;
+}
+
+.min{ height: 41px !important; }
+
+
+/* ### BORDER ### */
+
+.window-border{
+  position: absolute;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.border-top-left{
+  top: 0;
+  left: 0;
+  right: 20px;
+  bottom: 10px;
+  background: url(../img/border-top-left.png);
+}
+.border-top-right{
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 42px;
+  background: url(../img/border-top-right.png);
+  background-position: top right;
+}
+.border-bottom-right{
+  bottom: 0;
+  right: 0;
+  top: 42px;
+  left: 20px;
+  background: url(../img/border-bottom-right.png);
+  background-position: bottom right;
+}
+.border-bottom-left{
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 10px;
+  background: url(../img/border-bottom-left.png);
+  background-position: bottom left;
+}
+.shadow-fix{
+  bottom: 0;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: -1;
+}
+
+
+.min .border-bottom-right{ top: 10px; }
+.min .border-top-right{ height: 10px; }
+
+
+
+/* ### BUTTONS ### */
+
+.min-max-button, .min-max-button-click, .close-button, .close-button-click{
+  position: absolute;
+  width: 31px;
+  height: 31px;
+}
+.close-button, .min-max-button{
+	top: 5px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	z-index: 4;
+}
+.close-button, .close-button-click{
+	left: 5px;
+}
+.min-max-button, .min-max-button-click{
+	right: 5px;
+}
+.max-button, .min .min-button{ display: none; }
+.min .max-button{ display: block; }
+
+.min-button, .max-button, .close-button{ background-image: url('../img/buttons-windows.png'); }
+
+.min .min-button, .min .max-button, .min .close-button{ background-image: url('../img/buttons-windows-min.png'); }
+
+.min-button{ background-position: -31px 0; }
+
+.min-button:hover{ background-position: -31px -31px; }
+
+.max-button{ background-position: -62px 0; }
+
+.max-button:hover{ background-position: -62px -31px; }
+
+.close-button{ background-position: 0 0; }
+
+.close-button:hover{ background-position: 0 -31px; }
+
+
+
+/* ### --- WINDOWS END --- ### */
+
+
+
+
+
+
+
+
+
+
+/* ### --- WINDOWS CONTENT GLOBAL START --- ### */
+
+.window h2{
+	position: absolute;
+	top: 5px;
+	right: 36px;
+	left: 36px;
+	height: 31px;
+	line-height: 31px;
+	white-space: nowrap;
+	overflow: hidden;
+	box-sizing: border-box;
+	font-weight: 600;
+	background-image: url('../img/title-gradient.png');
+	background-repeat: repeat-x;
+	background-position: 0 -31px;
+	text-align: center;
+	text-shadow: 0px 1px 0px #ccc;
+	font-size: 15px;
+}
+.window.activeWin h2{ background-position: 0 0; }
+.marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 15s linear infinite;
+}
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+.content, .content-bg{
+	position: absolute;
+	top: 38px;
+	right: 5px;
+	left: 5px;
+	bottom: 5px;
+	background: #d9d9d9;
+}
+.content{
+	top: 45px;
+	left: 10px;
+	padding: 15px 20px 30px 20px;
+	background: transparent;
+	z-index: 2;
+	overflow-y: scroll;
+	bottom: 10px;
+	right: 10px;
+	border: 4px outset;
+	border-radius: 5px;
+	text-shadow: 0px 1px 0px #fff;
+}
+.content.no-padding{ padding: 0; }
+
+.content .initial-img{
+	float:left;
+	margin: 0 30px 10px 0;
+}
+.content-wrapper{
+	text-align: center;
+	margin-top: 25px;
+}
+.content-button{
+	z-index: 4;
+	text-align: center;
+	width: 100px;
+	height: 20px;
+	border: 5px outset;
+	padding: 3px 50px;
+	background-color: rgba(0, 0, 0, .05);
+	font-weight: 600;
+	cursor: pointer;
+}
+.content-button:hover{
+	border-style: inset;
+	background-color: rgba(0, 0, 0, .10);
+	color: #222;
+}
+
+
+/* ### --- WINDOWS CONTENT GLOBAL END --- ### */
+
+
+
+
+
+
+
+/* ### --- NOTIFICATION START --- ### */
+
+#notification{
+	width: 600px;
+	height: 190px;
+	top: 20%;
+	left: 25%;
+	display: none;
+	z-index: 10;
+}
+#notification .border-top-left{ background: url('../img/notification-border-top-left.png'); }
+
+#notification .border-top-right{ background: url('../img/notification-border-top-right.png'); }
+
+#notification .content-bg, #notification .content{ top: 10px; }
+
+#notification .content-bg{
+	background-color: #ddd;
+	top: 5px;
+}
+#notification img{
+	float: left;
+	margin-right: 20px;
+	width: 110px;
+	border: 3px inset;
+}
+
+/* ### --- NOTIFICATION END --- ### */
+
+
+
+
+
+
+
+/* ### --- EMUJI START --- ### */
+
+#emuji-wrapper, #emuji-speech-bubble{
+	position: fixed;
+	bottom: 6%;
+	left: 5%;
+}
+#emuji{
+	width: 190px;
+	height: 140px;
+	transition: height 1s ease-in-out;
+}
+#emuji:hover{
+	height: 150px;
+	
+}
+
+#emuji-speech-bubble{
+	margin: 0 0 80px 150px;
+	padding: 10px 30px 10px 10px;
+	width: 180px;
+	height: 100px;
+	background-color: #e7e7ba;
+	border: 2px dotted #333;
+	box-shadow: 10px 10px 5px rgba(0, 0, 0, .5);
+	font-style: italic;
+	color: #2b2b05;
+	display: none;
+	cursor: pointer;
+}
+#emuji-speech-bubble:after{
+	content: "";
+	position: absolute;
+	top: 80px;
+	left: -12px;
+	width: 20px;
+	height: 20px;
+	background-color: #e7e7ba;
+	border-left: 2px dotted #333;
+	border-bottom: 2px dotted #333;
+	transform: rotate(45deg);
+}
+#emuji-speech-bubble:before{
+	content: "x";
+	position: absolute;
+	top:3px;
+	right: 0px;
+	width: 20px;
+	height: 20px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+/* ### --- EMUJI END --- ### */
+
+
+
+
+
+
+
+
+/* ### --- INDIVIDUAL WINDOWS START --- ### */
+
+
+/* ABOUT */
+
+#about-logo{ 
+	border: 4px inset; 
+	margin-left: 40px;
+}
+ul{
+	list-style: disc;
+	margin-left: 20px;
+}
+
+
+
+/* MEMO */
+
+#window-memo .content{ 
+	border: none; 
+	margin-top: 34px;
+	padding-top: 20px;
+}
+
+#window-memo .content-bg{ background-color: #fff; }
+
+#window-memo .content-bg:after{ 
+	content: "";
+	background-color: #c0c0c0; 
+	position: absolute;
+	width: 100%;
+	height: 40px;
+	background-image: url("../img/memo-interface.png");
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	border-bottom: 2px solid #000;
+	background-size: 50%;
+}
+
+/* MOVIE */
+#window-cd .content{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	border-radius: 0;
+}
+#window-cd .content img{ width: 100%; }
+#window-cd .content-bg{ background-color: #9e9e9e; }
+
+
+
+
+/* CALENDAR */
+
+#window-calendar h4{
+	margin-bottom: 20px;
+	font-size: 14px;
+	text-align: left;
+	text-shadow: 0px 1px 0px #fff;
+	font-weight: bold;
+}
+
+#window-calendar table{ width: 100%; }
+
+#window-calendar table td, #window-calendar table th{
+	border: 2px ridge #aaa;
+	text-align: center;
+}
+#window-calendar table th{
+	background: #ccc;
+	font-style: italic;
+}
+td#feature-date{
+	background: #5fc8c8;
+	font-weight: 700;
+	color: #fff;
+	text-shadow: 0px -1px 0px black
+}
+#feature-date-text{
+	margin-top: 30px;
+	border: 4px inset;
+	padding: 5px 40px 5px 5px;
+	float: left;
+	margin-left: 20px;
+}
+#calendar-clock{ 
+	margin-top: 20px;
+	float: left; 
+}
+
+
+/* ### --- INDIVIDUAL WINDOWS END --- ### */
+
+
+
+
+
+/* ### --- DESKTOP START --- ### */
+
+.desktop-icon{
+	position: relative;
+	height: 100px;
+	width: 90px;
+	text-align: center;
+	color: #fff;
+	font-size: 12px;
+	padding: 5px 5px 2px 5px;
+	margin: 15px 25px 0 0;
+	border: 1px solid transparent;
+	display: block;
+	cursor: pointer;
+	text-shadow: 0px 1px 0px #000;
+}
+.icon-align-right{
+	float: right;
+	clear: right;
+}
+.icon-align-left{
+	float: left;
+}
+#clock-icon{ margin-top: 25px; }
+
+.desktop-icon:hover{ border: 1px dashed #ccc; }
+
+.desktop-icon p{
+	padding: 1px 3px 2px 3px;
+	margin-top: 5px;
+	background-color: rgba(255,255,255,.2)
+}
+
+#notepad-icon img{ margin-top: 12px; }
+
+#info-icon{
+	margin: 25px 0 0 25px;
+}
+
+#clock{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	border: 5px outset;
+	background-color: #ccc;
+	padding: 4px 20px;
+	color: #000;
+	font-size: 12px;
+}
+
+/* ### --- DESKTOP END --- ### */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
