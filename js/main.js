@@ -10,7 +10,7 @@ $( function(){
 		{	
 			$('#windows').append(		
 				'<section id="' + articles[ className ][ i ]['id'] + '" class="draggable window activeWin" ' + 
-					'style="top:' + articles[ className ][ i ]['top'] + ';right:' + articles[ className ][ i ]['right'] + ';width:' + articles[ className ][ i ]['width'] + ';height:' + articles[ className ][ i ]['height'] + ';z-index:' + articles[ className ][ i ]['zindex'] + ';">' +
+					'style="top:' + articles[ className ][ i ]['top'] + ';right:' + articles[ className ][ i ]['right'] + ';width:' + articles[ className ][ i ]['width'] + ';height:' + articles[ className ][ i ]['height'] + ';">' +
 					
 					'<div class="border-top-left window-border"></div><div class="border-top-right window-border"></div><div class="border-bottom-right window-border"></div><div class="border-bottom-left window-border"></div><div class="shadow-fix window-border"></div>' +
 					'<div class="close-button"></div>' +
@@ -40,22 +40,19 @@ $( function(){
 
 
 
-
-
-
-	// SET Z-INDEX
-	windowElems.mousedown(function() {
-
-		var el = $(this),
-		max = 0;
+	function setZIndex(el){
+		
+		var max = 0;
 		windowElems.each(function() {
 			var z = parseInt( $( this ).css( "z-index" ), 10 );
 			max = Math.max( max, z );
 		});
 		$('.window').removeClass('activeWin');
 		el.css("z-index", max + 1 ).addClass('activeWin');
-
-	});
+		
+	}
+	
+	windowElems.mousedown(function() { setZIndex( $(this) ); });
 
 
 	
@@ -78,6 +75,7 @@ $( function(){
 	$('.desktop-icon').click(function() {
 		$('.window').removeClass('activeWin');
 		$( '#' + $(this).attr("data-window-link") + '' ).show().addClass('activeWin');
+		setZIndex( $( '#' + $(this).attr("data-window-link") + '' ) );
 	});
 
 
