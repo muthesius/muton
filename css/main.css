@@ -238,7 +238,7 @@ body{
 
 #notification{
 	width: 600px;
-	height: 190px;
+	height: 225px;
 	top: 20%;
 	left: 25%;
 	display: none;
@@ -248,7 +248,10 @@ body{
 
 #notification .border-top-right{ background: url('../img/notification-border-top-right.png'); }
 
-#notification .content-bg, #notification .content{ top: 10px; }
+#notification .content-bg, #notification .content{ 
+	overflow: hidden;
+	top: 10px;
+}
 
 #notification .content-bg{
 	background-color: #ddd;
@@ -350,15 +353,22 @@ ul{
 
 /* MEMO */
 
-#window-memo .content{ 
+#window-memo .content, #window-images .content{ 
 	border: none; 
 	margin-top: 34px;
 	padding-top: 20px;
 }
+#window-images .content{ 
+	margin-left: 31px;
+	margin-top: 0px;
+	top: 40px;
+	bottom: 5px;
+	padding-top: 0px;
+}
 
-#window-memo .content-bg{ background-color: #fff; }
+#window-memo .content-bg, #window-images .content-bg{ background-color: #fff; }
 
-#window-memo .content-bg:after{ 
+#window-memo .content-bg:after, #window-images .content-bg:after{ 
 	content: "";
 	background-color: #c0c0c0; 
 	position: absolute;
@@ -370,6 +380,33 @@ ul{
 	border-bottom: 2px solid #000;
 	background-size: 50%;
 }
+#window-images .content-bg:after{ 
+	content: "";
+	background-color: #c0c0c0; 
+	position: absolute;
+	width: 40px;
+	height: 100%;
+	background-image: url("../img/images-interface-vertical.png");
+	background-repeat: no-repeat;
+	background-position: center 10px;
+	border-bottom: 2px solid #000;
+	border-right: 1px solid black;
+	background-size: 75%;
+}
+
+.portraits{
+	display: block;
+	margin: 20px 30px 0 0;
+	width: 230px;
+}
+
+.impressions{
+	display: block;
+	margin: 15px 0 0 0;
+	width: 570px;
+}
+
+
 
 /* MOVIE */
 #window-cd .content{
@@ -468,16 +505,38 @@ td#feature-date{
 	margin: 25px 0 0 25px;
 }
 
-#clock{
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	border: 5px outset;
-	background-color: #ccc;
+#clock, #instagram-link{
 	padding: 4px 20px;
 	color: #000;
 	font-size: 12px;
+	border-style: solid;
+	border-width: 5px;
+	border-top-color: #eee;
+	border-left-color: #eee;
+	border-right-color: #666;
+	border-bottom-color: #666;
+	display: inline-block;
+	text-decoration: none;
 }
+#instagram-link{
+	padding: 4px 50px;
+}
+#instagram-link:hover{
+	border-top-color: #666;
+	border-left-color: #666;
+	border-right-color: #eee;
+	border-bottom-color: #eee;
+	background-color: #bbb;
+}
+
+#right-bottom-corner{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	background-color: #ccc;
+}
+
+
 
 /* ### --- DESKTOP END --- ### */
 
